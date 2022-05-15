@@ -2,7 +2,7 @@ body {
     padding: 10px;
     margin: 10px;
 }
-.results {
+.players {
     margin: 10px;
     padding: 10px;
     display: flex;
@@ -10,6 +10,15 @@ body {
     align-items: center;
     border: 1px solid black;
     min-height: 700px;
+    min-width: 90%;
+}
+.results {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
 }
 .buttons {
     margin: 10px;
@@ -22,3 +31,9 @@ body {
     display: flex;
     justify-content: space-around;
 }
+.display {
+    display: flex;
+    justify-content: space-around;
+    min-width: 90%;
+}
+

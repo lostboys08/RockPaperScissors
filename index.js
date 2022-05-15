@@ -1,27 +1,35 @@
 // function section
+function updateScores(playerScore, computerScore) {
+    const computer = document.querySelector('#computerScore');
+    const player = document.querySelector('#playerScore');
+    computer.textContent = computerScore;
+    player.textContent = playerScore;
 
+    if (playerScore === 5) {
+        alert('You Win');
+        location.reload();
+    }
+    else if (computerScore === 5){
+        alert('Computer Wins');
+        location.reload();
+    }
+
+}
 function computerPlay() {
     let options = ["Rock", "Paper", "Scissors"];
     let result = options[Math.floor(Math.random()*options.length)];
     const container = document.querySelector('#computer');
-    const content = document.createElement('div');
-    content.classList.add('content');
-
-    //if(container.firstChild){
-    //    container.remove(firstChild);
-    //}
-    content.textContent = result;
-    container.appendChild(content);
+    container.textContent = result;
     return result;
 }
 function playerChoice(result) {
     const container = document.querySelector('#player');
+    container.textContent = result;
 
-    const content = document.createElement('div');
-    content.classList.add('content');
-    content.textContent = result;
-
-    container.appendChild(content);
+}
+function roundResult(result) {
+    const container = document.querySelector('#result');
+    container.textContent = result;
 
 }
 function singleRound(choice){
@@ -34,43 +42,43 @@ function singleRound(choice){
 
     if (playerSelection === "scissors" ) {
         if (computerSelection === "paper"){
-            console.log('You Win');
+            roundResult('You Win');
             i = 1;
         }
         else if (computerSelection === "rock") {
-            console.log('You Lose');
+            roundResult('You Lose');
             i = 3;
         }
         else {
-            console.log('tie');
+            roundResult('Tie');
             i = 2;
         }
     }
     else if (playerSelection === "rock" ) {
         if (computerSelection === "scissors"){
-            console.log('You Win');
+            roundResult('You Win');
             i = 1;
         }
         else if (computerSelection === "paper") {
-            console.log('You Lose');
+            roundResult('You Lose');
             i = 3;
         }
         else {
-            console.log('tie');
+            roundResult('Tie');
             i = 2;
         }
     }
     else if (playerSelection === "paper" ) {
         if (computerSelection === "rock"){
-            console.log('You Win');
+            roundResult('You Win');
             i = 1;
         }
         else if (computerSelection === "scissors") {
-            console.log('You Lose');
+            roundResult('You Lose');
             i = 3;
         }
         else {
-            console.log('tie');
+            roundResult('Tie');
             i = 2;
         }
     } 
@@ -78,7 +86,7 @@ function singleRound(choice){
         i = 4;
     }
     else {
-        console.log('error... Try again');
+        roundResult('error... Try again');
         i = 0;
     }
     return i;
@@ -86,6 +94,7 @@ function singleRound(choice){
 function game(){
     let playerScore = 0;
     let computerScore = 0;
+    let result = null;
 
 
     const rock = document.querySelector('#rock');
@@ -93,8 +102,18 @@ function game(){
         console.log('rock');
         let choice = 'rock';
 
-        let result = singleRound(choice);
-        playerChoice('rock');
+        result = singleRound(choice);
+        playerChoice('Rock');
+
+        if (result === 1) {
+            playerScore++
+        }
+        else if (result === 3){
+            computerScore++
+        }
+        console.log(`Computer: ${computerScore}`);
+        console.log(`You: ${playerScore}`);
+        updateScores(playerScore, computerScore);
 
     });
 
@@ -103,8 +122,18 @@ function game(){
         console.log('paper');
         let choice = 'paper';
     
-        let result = singleRound(choice);
-        playerChoice('paper');
+        result = singleRound(choice);
+        playerChoice('Paper');
+
+        if (result === 1) {
+            playerScore++
+        }
+        else if (result === 3){
+            computerScore++
+        }
+        console.log(`Computer: ${computerScore}`);
+        console.log(`You: ${playerScore}`);
+        updateScores(playerScore, computerScore);
     });
 
     const scissors = document.querySelector('#scissors');
@@ -112,27 +141,19 @@ function game(){
         console.log('scissors');
         let choice = 'scissors';
 
-        let result = singleRound(choice);
-        playerChoice('scissors');
-    });
+        result = singleRound(choice);
+        playerChoice('Scissors');
 
-
-    
-    //while ( playerScore < 5 && computerScore < 5) {
-    //    result = singleRound();
-    //    if (result === 1) {
-    //        playerScore++
-    //    }
-    //    else if (result === 4){
-    //        playerScore = 100;
-    //        alert("I love you Corry. You always win:)");
-    //    }
-    //    else if (result === 3){
-    //        computerScore++
-    //    }
-    //    console.log(`Computer: ${computerScore}`);
-    //    console.log(`You: ${playerScore}`);
-    // }
+        if (result === 1) {
+            playerScore++
+        }
+        else if (result === 3){
+            computerScore++
+        }
+        console.log(`Computer: ${computerScore}`);
+        console.log(`You: ${playerScore}`);
+        updateScores(playerScore, computerScore);
+    });    
 }
 
 

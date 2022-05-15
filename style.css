@@ -1,4 +1,24 @@
 body {
-    padding: 0px;
-    margin: 0px;
+    padding: 10px;
+    margin: 10px;
+}
+.results {
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid black;
+    min-height: 700px;
+}
+.buttons {
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.selection {
+    display: flex;
+    justify-content: space-around;
 }

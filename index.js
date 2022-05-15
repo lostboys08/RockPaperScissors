@@ -2,10 +2,30 @@
 
 function computerPlay() {
     let options = ["Rock", "Paper", "Scissors"];
-    return options[Math.floor(Math.random()*options.length)];
+    let result = options[Math.floor(Math.random()*options.length)];
+    const container = document.querySelector('#computer');
+    const content = document.createElement('div');
+    content.classList.add('content');
+
+    //if(container.firstChild){
+    //    container.remove(firstChild);
+    //}
+    content.textContent = result;
+    container.appendChild(content);
+    return result;
 }
-function singleRound(){
-    let playerSelection = prompt('Choice');
+function playerChoice(result) {
+    const container = document.querySelector('#player');
+
+    const content = document.createElement('div');
+    content.classList.add('content');
+    content.textContent = result;
+
+    container.appendChild(content);
+
+}
+function singleRound(choice){
+    let playerSelection = choice;
     let computerSelection = computerPlay();
     let i = null;
 
@@ -66,8 +86,38 @@ function singleRound(){
 function game(){
     let playerScore = 0;
     let computerScore = 0;
-    let result = null;
 
+
+    const rock = document.querySelector('#rock');
+    rock.addEventListener('click', () => {
+        console.log('rock');
+        let choice = 'rock';
+
+        let result = singleRound(choice);
+        playerChoice('rock');
+
+    });
+
+    const paper = document.querySelector('#paper');
+    paper.addEventListener('click', () => {
+        console.log('paper');
+        let choice = 'paper';
+    
+        let result = singleRound(choice);
+        playerChoice('paper');
+    });
+
+    const scissors = document.querySelector('#scissors');
+    scissors.addEventListener('click', () => {
+        console.log('scissors');
+        let choice = 'scissors';
+
+        let result = singleRound(choice);
+        playerChoice('scissors');
+    });
+
+
+    
     //while ( playerScore < 5 && computerScore < 5) {
     //    result = singleRound();
     //    if (result === 1) {
@@ -85,21 +135,6 @@ function game(){
     // }
 }
 
-
-const rock = document.querySelector('#rock');
-rock.addEventListener('click', () => {
-    console.log('rock');
-});
-
-const paper = document.querySelector('#paper');
-paper.addEventListener('click', () => {
-    console.log('paper');
-});
-
-const scissors = document.querySelector('#scissors');
-scissors.addEventListener('click', () => {
-    console.log('scissors');
-});
 
 // Main Body
 game();
